@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout
+#from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 # Import Rango models
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
@@ -102,6 +102,7 @@ def add_page(request, category_name_slug):
 
     return render(request, 'rango/add_page.html', context_dict)
 
+'''
 def register(request):
 
     # A boolean value for telling the template whether the registration was successful.
@@ -212,3 +213,5 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/rango/')
+'''
+
