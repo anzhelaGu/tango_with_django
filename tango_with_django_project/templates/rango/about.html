@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} About Rango! {% endblock %}
+
+{% block body_block %}
+        <h1>This page is...</h1>
+        Rango About Page! <strong>{{ boldmessage }}</strong><br />
+		<img src="{% static "images/bg.jpg" %}" alt="Picture of BGmountains" />
+ 
+{% endblock %}
