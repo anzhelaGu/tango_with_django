@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 #from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-#from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 # Import Rango models
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
@@ -214,4 +214,8 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/rango/')
 '''
+
+@login_required
+def restricted(request):
+    return render(request, 'rango/restricted.html', {})
 
