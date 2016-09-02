@@ -1,7 +1,14 @@
 import json
 import urllib, urllib2
-from keys.py import BING_API_KEY
+from keys import *
 
+
+def main():
+    query = input('Enter your query: ')
+    run_query(query)
+
+if __name__ == "__main__":
+    main()
 
 def run_query(search_terms):
     # Specify the base
