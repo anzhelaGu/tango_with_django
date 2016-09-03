@@ -31,6 +31,17 @@ def category(request, category_name_slug):
     # Create a context dictionary which we can pass to the template rendering engine.
     context_dict = {}
 
+    context_dict['result_list'] = None
+    context_dict['query'] = None
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            # Run our Bing function to get the results list!
+            result_list = run_query(query)
+            context_dict['result_list'] = result_list
+            context_dict['query'] = query
+
     try:
         # Can we find a category name slug with the given name?
         # If we can't, the .get() method raises a DoesNotExist exception.
@@ -52,6 +63,9 @@ def category(request, category_name_slug):
         # We get here if we didn't find the specified category.
         # Don't do anything - the template displays the "no category" message for us.
         pass
+
+    if not context_dict['query']:
+        context_dict['query'] = category.name
 
     # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
@@ -222,7 +236,7 @@ def user_logout(request):
 @login_required
 def restricted(request):
     return render(request, 'rango/restricted.html', {})
-
+'''
 def search(request):
 
     result_list = []
@@ -235,6 +249,7 @@ def search(request):
             result_list = run_query(query)
 
     return render(request, 'rango/search.html', {'result_list': result_list})
+'''
 
 def track_url(request):
     page_id = None
